@@ -55,3 +55,14 @@ if ! bashio::config.has_value "lets_encrypt_certfile" || \
 then
     rm /etc/s6-overlay/s6-rc.d/user/contents.d/certificate
 fi
+
+# Append ca certificate to /etc/ssl/certs/ca-certificates.crt
+if bashio::config.has_value 'ca_cert';
+then
+    ca_cert=$(bashio::config "ca_cert")
+    echo "" >> /etc/ssl/certs/ca-certificates.crt
+    echo ${ca_cert} >> /etc/ssl/certs/ca-certificates.crt
+    bashio::log.info "Installed ca certificate"
+else
+    bashio::log.info "Extra ca certificate disabled"
+fi

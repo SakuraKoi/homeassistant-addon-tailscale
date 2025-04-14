@@ -135,6 +135,20 @@ configuration:
       Assistant instance, disable userspace networking mode, which will create a
       `tailscale0` network interface on your host.
       When not set, this option is enabled by default.
+  hostname:
+    name: Hostname
+    description: >-
+      This option allows you to set tailnet hostname.
+      When not set, hass hostname is used by default.
+  auth_key:
+    name: PreAuth Key
+    description: >-
+      This option allows you to login with a pre auth key.
+      When not set, url login is used by default.
+  ca_cert:
+    name: Extra Custom Root-CA
+    description: >-
+      This option allows you to trust a extra ca certificate.
 network:
   41641/udp: >-
     UDP port to listen on for WireGuard and peer-to-peer traffic.

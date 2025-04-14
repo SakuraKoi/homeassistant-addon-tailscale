@@ -5,6 +5,11 @@
 > This is a **fork** of the [community add-on][community_addon]!
 >
 > Changes:
+>
+> - Add custom root ca support
+> - Add pre auth key support
+> - Add custom hostname support
+>
 > - Release unreleased changes from community add-on:
 >   - Update tailscale/tailscale to v1.82.0
 >   - Add HEALTHCHECK support
