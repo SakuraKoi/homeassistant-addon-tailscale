@@ -1,0 +1,19 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Tailscale
+# Runs before tailscaled start
+# ==============================================================================
+
+declare ca_certs
+
+# Append ca certificate to /etc/ssl/certs/ca-certificates.crt
+if bashio::config.has_value 'ca_cert';
+then
+    ca_cert=$(bashio::config "ca_cert")
+    echo "" >> /etc/ssl/certs/ca-certificates.crt
+    echo ${ca_cert} >> /etc/ssl/certs/ca-certificates.crt
+    bashio::log.info "Installed ca certificate"
+else
+    bashio::log.notice "Extra ca certificate disabled"
+fi
