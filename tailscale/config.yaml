@@ -56,4 +56,4 @@ schema:
   taildrop: bool?
   userspace_networking: bool?
   ca_cert: str?
-image: ghcr.io/lmagyar/{arch}-addon-tailscale
+image: ghcr.io/sakurakoi/{arch}-addon-tailscale
