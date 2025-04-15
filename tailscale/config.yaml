@@ -1,6 +1,6 @@
 ---
 name: Tailscale Mod
-version: 0.25.0.3
+version: 0.25.0.4
 slug: tailscale
 description: Zero config VPN for building secure networks
 url: https://github.com/SakuraKoi/homeassistant-addon-tailscale

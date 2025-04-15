@@ -10,6 +10,7 @@ ARG BUILD_ARCH=amd64
 ARG TAILSCALE_VERSION="v1.82.0"
 RUN \
     apk add --no-cache \
+        ca-certificates
         bind-tools=9.18.35-r0 \
         dnsmasq=2.90-r3 \
         ethtool=6.11-r0 \
@@ -37,6 +38,8 @@ RUN \
 
 # Copy root filesystem
 COPY rootfs /
+# Try fix permission denied
+RUN chmod +x /etc/s6-overlay/s6-rc.d/setup-extra-ca/run
 
 HEALTHCHECK \
     CMD healthcheck

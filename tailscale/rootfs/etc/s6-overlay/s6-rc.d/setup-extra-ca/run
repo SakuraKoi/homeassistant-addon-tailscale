@@ -10,10 +10,12 @@ declare ca_certs
 # Append ca certificate to /etc/ssl/certs/ca-certificates.crt
 if bashio::config.has_value 'ca_cert';
 then
+    bashio::log.info "Extracting extra Root CA..."
     ca_cert=$(bashio::config "ca_cert")
-    echo "" >> /etc/ssl/certs/ca-certificates.crt
-    echo ${ca_cert} >> /etc/ssl/certs/ca-certificates.crt
+    echo ${ca_cert} > /usr/local/share/ca-certificates/extra_root_ca.crt
+    bashio::log.info "Installing extra Root CA..."
+    update-ca-certificates
     bashio::log.info "Installed ca certificate"
 else
-    bashio::log.notice "Extra ca certificate disabled"
+    bashio::log.notice "Extra Root CA certificate disabled"
 fi
